@@ -1,1 +1,340 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salad Buah Muza - Ready Setiap Hari!</title>
+    <!-- Memuat Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Ikon Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Konfigurasi Tailwind untuk Font Inter -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // TEMA WARNA: Pink Fuchsia (CTA) dan Beige Soft (Aksen)
+                        'primary-pink': '#E91E63', // Pink Fuchsia (Lebih bold)
+                        'secondary-beige': '#F4E8D6', // Beige Soft
+                        'light-bg': '#F0F0F0', // Abu-abu muda untuk latar
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Gaya Kustom untuk memastikan responsif dan visual yang bagus */
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            /* Menggunakan aksen beige baru */
+            border: 4px solid var(--secondary-beige, #F4E8D6); 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            /* Menggunakan warna utama pink baru untuk efek shadow */
+            box-shadow: 0 10px 15px -3px rgba(233, 30, 99, 0.3), 0 4px 6px -2px rgba(233, 30, 99, 0.1);
+        }
+        .section-divider {
+            height: 3px;
+            /* Menggunakan gradien dari warna aksen (beige) ke warna utama (pink) */
+            background: linear-gradient(to right, #F4E8D6, #E91E63);
+            width: 80px;
+            margin: 1rem auto;
+            border-radius: 9999px;
+        }
+        /* Ikon untuk memastikan ukuran yang seragam */
+        .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        /* Gaya untuk menu mobile (diatur di JS) */
+        #mobile-menu.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-light-bg font-sans min-h-screen flex flex-col items-center p-4" id="home-section">
+
+    <!-- Navigasi Bar (Responsive) -->
+    <nav class="w-full bg-white shadow-md fixed top-0 z-10">
+        <div class="max-w-lg mx-auto flex items-center justify-between p-4">
+            <!-- Logo/Nama Brand -->
+            <div class="text-xl font-bold text-primary-pink">Salad Buah Muza</div>
+            
+            <!-- Tombol Hamburger (Hanya Tampil di Mobile) -->
+            <button id="menu-toggle" class="md:hidden p-1 text-gray-700 hover:text-primary-pink transition duration-150 rounded-md">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Menu Desktop (Sembunyi di Mobile) -->
+            <div class="hidden md:flex space-x-6 text-sm font-semibold">
+                <a href="#home-section" class="text-gray-700 hover:text-primary-pink transition">Beranda</a>
+                <a href="#about-us" class="text-gray-700 hover:text-primary-pink transition">Tentang Kami</a>
+                <a href="#menu-section" class="text-gray-700 hover:text-primary-pink transition">Menu</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary-pink transition">Kontak</a>
+            </div>
+        </div>
+
+        <!-- Menu Mobile (Tampil saat diklik) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-200">
+            <a href="#home-section" class="block py-3 px-6 text-gray-700 hover:bg-gray-50 hover:text-primary-pink transition border-b border-gray-100">Beranda</a>
+            <a href="#about-us" class="block py-3 px-6 text-gray-700 hover:bg-gray-50 hover:text-primary-pink transition border-b border-gray-100">Tentang Kami</a>
+            <a href="#menu-section" class="block py-3 px-6 text-gray-700 hover:bg-gray-50 hover:text-primary-pink transition border-b border-gray-100">Menu</a>
+            <a href="#contact" class="block py-3 px-6 text-gray-700 hover:bg-gray-50 hover:text-primary-pink transition">Kontak</a>
+        </div>
+    </nav>
+    
+    <!-- Kontainer Utama Konten (Diberi margin atas agar tidak tertutup nav) -->
+    <div class="w-full max-w-lg bg-white shadow-xl rounded-2xl p-6 md:p-8 mt-20"> <!-- mt-20 untuk memberi ruang di bawah fixed nav -->
+
+        <!-- Bagian Header/Profil -->
+        <header class="text-center mb-6">
+            <!-- Gambar Profil (Placeholder yang mengikuti gaya) -->
+            <img src="https://placehold.co/120x120/E91E63/F4E8D6?text=SM" 
+                 alt="Foto Profil Salad Buah Muza" 
+                 class="profile-picture mx-auto mb-4" 
+                 onerror="this.onerror=null;this.src='https://placehold.co/120x120/E91E63/F4E8D6?text=SM'">
+            
+            <h1 class="text-3xl font-bold text-gray-800 mb-1">salad_buah_muza</h1>
+            <!-- Menggunakan warna utama baru -->
+            <p class="text-primary-pink font-semibold text-lg">Salad Buah Muza</p>
+            
+            <!-- Deskripsi Singkat dari Bio -->
+            <div class="mt-4 p-3 bg-secondary-beige bg-opacity-70 rounded-lg border-l-4 border-primary-pink">
+                <p class="text-sm text-gray-700">
+                    <span class="font-bold">Bisnis Rumahan.</span> Ready setiap hari: Minggu. Salad Buah Premium, Segar, dan Sehat.
+                </p>
+                <p class="text-xs text-gray-500 mt-1">
+                    📍 Ds.Jali Bonang Demak, Demak 59552
+                </p>
+            </div>
+        </header>
+
+        <!-- Garis Pembatas -->
+        <div class="section-divider"></div>
+
+        <!-- Bagian Ajakan Bertindak (CTA Links) -->
+        <section id="cta-links" class="space-y-4 mt-6">
+            
+            <!-- Link 1: Pesan Sekarang via WhatsApp (Warna Utama Baru) -->
+            <a href="https://wa.me/6281234567890?text=Halo%20Salad%20Buah%20Muza,%20saya%20mau%20pesan%20salad%20buah%20premium%20yang%20segar%20dan%20sehat!" 
+               target="_blank" 
+               class="cta-button w-full flex items-center justify-center p-4 bg-primary-pink text-white font-bold rounded-xl shadow-lg hover:bg-pink-600 transition duration-300">
+                <i data-lucide="whatsapp" class="icon"></i>
+                <span>Pesan Sekarang via WhatsApp (Fast Respon)</span>
+            </a>
+
+            <!-- Link 2: Lihat Menu & Harga (Warna Aksen Baru) -->
+            <a href="#menu-section" 
+               class="cta-button w-full flex items-center justify-center p-4 bg-secondary-beige text-gray-800 font-bold rounded-xl shadow-md hover:bg-yellow-100 transition duration-300">
+                <i data-lucide="clipboard-list" class="icon"></i>
+                <span>Lihat Varian Menu & Harga</span>
+            </a>
+
+            <!-- Link 3: Ikuti Instagram -->
+            <a href="https://www.instagram.com/salad_buah_muza/" 
+               target="_blank" 
+               class="cta-button w-full flex items-center justify-center p-4 border border-gray-300 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition duration-300">
+                <i data-lucide="instagram" class="icon"></i>
+                <span>Kunjungi Profil Instagram</span>
+            </a>
+
+            <!-- Link 4: Lokasi di Google Maps -->
+            <a href="https://maps.app.goo.gl/YourGoogleMapsLink" 
+               target="_blank" 
+               class="cta-button w-full flex items-center justify-center p-4 border border-gray-300 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition duration-300">
+                <i data-lucide="map-pin" class="icon"></i>
+                <span>Cek Lokasi (Google Maps)</span>
+            </a>
+        </section>
+
+        <!-- Garis Pembatas -->
+        <div class="section-divider mt-8"></div>
+
+        <!-- Bagian Menu (Contoh Struktur) -->
+        <section id="menu-section" class="mt-8 pt-4">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6 flex items-center justify-center">
+                <!-- Menggunakan warna utama baru -->
+                <i data-lucide="cup-soda" class="icon text-primary-pink"></i>
+                Menu Pilihan Terbaik
+            </h2>
+
+            <div class="space-y-4">
+                <!-- Item Menu 1: Ukuran Personal (Menggunakan warna utama baru) -->
+                <div class="flex items-center p-4 bg-white rounded-xl shadow-md border border-primary-pink/20 hover:shadow-lg transition">
+                    <div class="flex-shrink-0">
+                        <i data-lucide="package" class="w-6 h-6 text-primary-pink"></i>
+                    </div>
+                    <div class="ml-4 flex-grow">
+                        <p class="text-lg font-semibold text-gray-800">Salad Buah Personal (150gr)</p>
+                        <p class="text-sm text-gray-500">Cocok untuk dinikmati sendiri.</p>
+                    </div>
+                    <span class="text-xl font-bold text-primary-pink">Rp 15.000</span>
+                </div>
+
+                <!-- Item Menu 2: Ukuran Sharing (Menggunakan warna utama baru) -->
+                <div class="flex items-center p-4 bg-white rounded-xl shadow-md border border-primary-pink/20 hover:shadow-lg transition">
+                    <div class="flex-shrink-0">
+                        <i data-lucide="box" class="w-6 h-6 text-primary-pink"></i>
+                    </div>
+                    <div class="ml-4 flex-grow">
+                        <p class="text-lg font-semibold text-gray-800">Salad Buah Keluarga (500gr)</p>
+                        <p class="text-sm text-gray-500">Pilihan tepat untuk berbagi kesegaran.</p>
+                    </div>
+                    <span class="text-xl font-bold text-primary-pink">Rp 45.000</span>
+                </div>
+                
+                <!-- Item Menu 3: Topping Tambahan (Menggunakan warna aksen baru) -->
+                <div class="flex items-center p-4 bg-white rounded-xl shadow-md border border-secondary-beige/70 hover:shadow-lg transition">
+                    <div class="flex-shrink-0">
+                        <i data-lucide="heart" class="w-6 h-6 text-secondary-beige"></i>
+                    </div>
+                    <div class="ml-4 flex-grow">
+                        <p class="text-lg font-semibold text-gray-800">Tambahan Keju/Yogurt</p>
+                        <p class="text-sm text-gray-500">Ekstra nikmat! Tanyakan detailnya di WA.</p>
+                    </div>
+                    <span class="text-xl font-bold text-secondary-beige">Mulai Rp 5.000</span>
+                </div>
+            </div>
+            
+            <p class="text-center text-sm text-gray-600 mt-4">
+                *Harga dapat berubah sewaktu-waktu. Hubungi WA untuk detail pemesanan.
+            </p>
+        </section>
+        
+        <!-- Garis Pembatas -->
+        <div class="section-divider mt-8"></div>
+
+        <!-- Bagian Tentang Kami -->
+        <section id="about-us" class="mt-8 pt-4">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6 flex items-center justify-center">
+                <i data-lucide="info" class="icon text-primary-pink"></i>
+                Tentang Salad Buah Muza
+            </h2>
+            <div class="p-4 bg-secondary-beige bg-opacity-30 rounded-lg text-sm text-gray-700">
+                <p class="mb-3">
+                    Kami memulai Salad Buah Muza dengan satu misi: menyajikan hidangan penutup yang lezat, segar, dan benar-benar sehat. Kami hanya menggunakan buah-buahan premium pilihan, *dressing* yoghurt spesial buatan sendiri yang rendah kalori, dan tanpa tambahan pengawet.
+                </p>
+                <p>
+                    Kami berkomitmen pada kualitas terbaik, sehingga setiap mangkuk salad buah yang Anda terima adalah jaminan kesegaran dan kebahagiaan. Sempurna untuk camilan sehat Anda setiap hari.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Garis Pembatas -->
+        <div class="section-divider mt-8"></div>
+
+        <!-- Bagian Kontak -->
+        <section id="contact" class="mt-8 pt-4">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6 flex items-center justify-center">
+                <i data-lucide="phone" class="icon text-primary-pink"></i>
+                Hubungi Kami
+            </h2>
+            <div class="space-y-3">
+                
+                <!-- Kontak WhatsApp -->
+                <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-primary-pink/20">
+                    <i data-lucide="whatsapp" class="w-5 h-5 text-primary-pink flex-shrink-0"></i>
+                    <div class="ml-3">
+                        <p class="text-sm font-semibold text-gray-800">WhatsApp (Pemesanan)</p>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="text-xs text-primary-pink hover:underline">
+                            +62 812 3456 7890
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kontak Instagram -->
+                <div class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-300">
+                    <i data-lucide="instagram" class="w-5 h-5 text-gray-600 flex-shrink-0"></i>
+                    <div class="ml-3">
+                        <p class="text-sm font-semibold text-gray-800">Instagram Official</p>
+                        <a href="https://www.instagram.com/salad_buah_muza/" target="_blank" class="text-xs text-gray-600 hover:underline">
+                            @salad_buah_muza
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Alamat -->
+                <div class="flex items-start p-3 bg-secondary-beige bg-opacity-50 rounded-lg shadow-sm">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-gray-700 mt-0.5 flex-shrink-0"></i>
+                    <div class="ml-3">
+                        <p class="text-sm font-semibold text-gray-800">Alamat Outlet</p>
+                        <p class="text-xs text-gray-700">Ds.Jali Bonang Demak, Demak 59552</p>
+                        <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank" class="text-xs text-primary-pink hover:underline mt-1 block">
+                            Lihat di Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-xs text-gray-500 pb-4">
+        &copy; 2025 Salad Buah Muza. Dikelola oleh Owner @naofaa_.
+    </footer>
+
+    <script>
+        // Inisialisasi ikon Lucide
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            // SCRIPT UNTUK TOGGLE MENU RESPONSIVE
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Tutup menu mobile saat link diklik (smooth scroll)
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // SCRIPT UNTUK SMOOTH SCROLL
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // Mendapatkan tinggi navigasi (sekitar 64px)
+                        const navHeight = document.querySelector('nav').offsetHeight; 
+                        
+                        // Menyesuaikan scroll position untuk Fixed Header
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            console.log("Salad Buah Muza Landing Page Loaded with Responsive Navigation!");
+        });
+    </script>
+</body>
+</html>
